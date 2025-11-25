@@ -598,14 +598,17 @@
       }
 
       // Jalan
-      const road = {
-        laneWidth: canvas.width * 0.5,
-        stripeWidth: 10,
-        stripeHeight: 40,
-        gap: 30,
-        speed: 5,
-        offset: 0,
-      };
+     const road = {
+  laneWidth: window.innerWidth < 768 
+    ? canvas.width * 0.9 
+    : canvas.width * 0.55,
+  stripeWidth: 10,
+  stripeHeight: 40,
+  gap: 30,
+  speed: 5,
+  offset: 0,
+};
+
 
       function drawRoad() {
         const theme = getCurrentTheme();
@@ -1074,13 +1077,17 @@
       }
 
       window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-        road.laneWidth = canvas.width * 0.5;
-        player.y = canvas.height - 120;
-        player.x = canvas.width / 2 - player.width / 2;
-      });
+  road.laneWidth = window.innerWidth < 768 
+    ? canvas.width * 0.9 
+    : canvas.width * 0.55;
+
+  player.y = canvas.height - 120;
+  player.x = canvas.width / 2 - player.width / 2;
+});
+
 
       // Initialize
       loadLeaderboard();
@@ -1115,3 +1122,4 @@ btns.forEach(btn => {
 
   </body>
 </html>
+
