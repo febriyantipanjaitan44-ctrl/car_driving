@@ -12,7 +12,9 @@ canvas.height = window.innerHeight;
 
 // Jalan
 const road = {
-  road.laneWidth = window.innerWidth < 768 ? canvas.width * 0.85 : canvas.width * 0.55,
+  laneWidth: window.innerWidth < 768 
+    ? canvas.width * 0.9 
+    : canvas.width * 0.55,
   stripeWidth: 10,
   stripeHeight: 40,
   gap: 30,
@@ -465,10 +467,14 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  road.laneWidth = canvas.width * 0.5;
-  player.y = canvas.height - 80;
+  road.laneWidth = window.innerWidth < 768 
+    ? canvas.width * 0.9 
+    : canvas.width * 0.55;
+
+  player.y = canvas.height - 120;
   player.x = canvas.width / 2 - player.width / 2;
 });
+
 
 function drawGameOver() {
   ctx.save();
@@ -479,5 +485,6 @@ function drawGameOver() {
   ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
   ctx.restore();
 }
+
 
 
