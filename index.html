@@ -337,12 +337,38 @@ canvas {
     font-size: 32px;
     font-weight: bold;
     cursor: pointer;
+	   justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
   }
 
   .btn-move:active {
     background: rgba(255,255,255,0.2);
   }
     </style>
+<style>
+@media (max-width: 768px) {
+
+  .btn-move {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 22px !important;     /* icon mengecil */
+    line-height: 48px !important;   /* icon tepat di tengah */
+    padding: 0 !important;          /* tidak ada ruang ekstra */
+    border-width: 1.5px !important;
+    text-align: center !important;
+  }
+
+  .touch-controls {
+    bottom: 18px !important;
+    gap: 6px !important;
+  }
+
+  .horizontal-btns {
+    gap: 6px !important;
+  }
+}
+</style>
 
     </style>
   </head>
@@ -1137,5 +1163,6 @@ btns.forEach(btn => {
 
   </body>
 </html>
+
 
 
