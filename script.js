@@ -12,7 +12,7 @@ canvas.height = window.innerHeight;
 
 // Jalan
 const road = {
-  laneWidth: canvas.width * 0.5,
+  laneWidth: canvas.width * 0.8,
   stripeWidth: 10,
   stripeHeight: 40,
   gap: 30,
@@ -479,3 +479,4 @@ function drawGameOver() {
   ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
   ctx.restore();
 }
+
