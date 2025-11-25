@@ -616,23 +616,35 @@
         height: 90,
       };
 
-      player.x = canvas.width / 2 - player.width / 2;
+      // Posisi awal pemain
+player.x = canvas.width / 2 - player.width / 2;
 
-      let keys = { a: false, d: false, w: false, s: false };
+// ====== TOUCH CONTROLS ======
+function setupTouchControls() {
+  const btnLeft  = document.getElementById("btnLeft");
+  const btnRight = document.getElementById("btnRight");
+  const btnUp    = document.getElementById("btnUp");
+  const btnDown  = document.getElementById("btnDown");
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key.toLowerCase() === "a") keys.a = true;
-        if (e.key.toLowerCase() === "d") keys.d = true;
-        if (e.key.toLowerCase() === "w") keys.w = true;
-        if (e.key.toLowerCase() === "s") keys.s = true;
-      });
+  function bind(btn, press, release) {
+    btn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      press();
+    }, { passive: false });
 
-      document.addEventListener("keyup", (e) => {
-        if (e.key.toLowerCase() === "a") keys.a = false;
-        if (e.key.toLowerCase() === "d") keys.d = false;
-        if (e.key.toLowerCase() === "w") keys.w = false;
-        if (e.key.toLowerCase() === "s") keys.s = false;
-      });
+    btn.addEventListener("touchend", release);
+    btn.addEventListener("pointerdown", press);
+    btn.addEventListener("pointerup", release);
+    btn.addEventListener("mouseleave", release);
+  }
+
+  bind(btnLeft,  () => player.vx = -player.speed, () => player.vx = 0);
+  bind(btnRight, () => player.vx =  player.speed, () => player.vx = 0);
+  bind(btnUp,    () => player.vy = -player.speed, () => player.vy = 0);
+  bind(btnDown,  () => player.vy =  player.speed, () => player.vy = 0);
+}
+
+setupTouchControls();
 
       // Obstacles
       let obstacles = [];
@@ -1036,3 +1048,4 @@
     </script>
   </body>
 </html>
+
